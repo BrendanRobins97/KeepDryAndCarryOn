@@ -60,4 +60,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-/App/Il2CppOutputProject/
+
+# MSBuild for Unity
+MSBuildForUnity.Common.props

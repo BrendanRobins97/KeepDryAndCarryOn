@@ -7,6 +7,7 @@ public class caster : MonoBehaviour
     public bool rdy;
     public int holes;
     public int plugs;
+    public bool corDone;
     public GameObject myTopLeft;
     public GameObject myBottomRight;
     //public float timer;
@@ -34,12 +35,14 @@ public class caster : MonoBehaviour
     {
         holes = 0;
         plugs = 0;
+        corDone = false;
         transform.position = new Vector3(xMin, yMin, transform.position.z);
         StartCoroutine(cast(xMin, xMax, yMin, yMax));
     }
     int returnHoles(int myHoles, int myPlugs)
     {
-        print(myHoles);
+        print(myHoles+ " "+ holes);
+        corDone = true;
         return (myHoles);
     }
     IEnumerator cast(float xMin, float xMax, float yMin, float yMax)
