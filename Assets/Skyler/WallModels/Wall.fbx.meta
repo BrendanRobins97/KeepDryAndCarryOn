@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: ccfd2041e1eb63a438383b395242350f
+guid: 9f29864e30a5bd04aa018fc480191d8c
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cloth
-    second: {fileID: 2100000, guid: 6ac58077459c26743a3d4baf8638d893, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Leg
-    second: {fileID: 2100000, guid: 2a32a53f0073c3548a20286ff9190d79, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +36,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
