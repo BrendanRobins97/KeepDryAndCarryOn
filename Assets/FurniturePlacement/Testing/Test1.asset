@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd7e722ffe6c3f4dafa832b85bf983f, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  possibleFurniturePieces:
-  - {fileID: 3722624387600916164, guid: 415baecc0e564fe41a08c9de8444977c, type: 3}
-  probability: 01000000
+  possibleFurniture: []
+  relativeProbabilities: 

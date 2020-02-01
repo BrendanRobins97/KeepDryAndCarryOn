@@ -235,6 +235,7 @@ MonoBehaviour:
   allowedTypes:
   - {fileID: 11400000, guid: 9a0f886fcdce87643a57c2c8bdf7e08f, type: 2}
   - {fileID: 11400000, guid: a2b0666d71d33114187c1af4ef49fd02, type: 2}
+  relativeProbabilities: 0100000001000000
 --- !u!4 &1100859731
 Transform:
   m_ObjectHideFlags: 0

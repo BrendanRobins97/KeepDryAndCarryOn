@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static RelativeProbability;
 
 public class FurnitureSpawn : MonoBehaviour
 {
@@ -6,15 +7,21 @@ public class FurnitureSpawn : MonoBehaviour
     [SerializeField]
     private FurnitureType[] allowedTypes;
 
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawIcon(transform.position, "FurnitureSpawn.png");
-    }
+    [Tooltip("Higher numbers are more likely")]
+    [SerializeField]
+    private int[] relativeProbabilities;
+
+    private int total = 0;
 
     void Awake()
     {
-        if (allowedTypes == null || allowedTypes.Length == 0)
+        if (allowedTypes.Length != relativeProbabilities.Length)
+            throw new System.Exception("Counts must be equal");
+
+        if (allowedTypes.Length == 0)
             throw new System.Exception("Must have at least one furniture type");
+
+        total = Total(relativeProbabilities);
     }
 
     void Start()
@@ -28,11 +35,17 @@ public class FurnitureSpawn : MonoBehaviour
     /// </summary>
     public void Spawn()
     {
-        GameObject spawned = Instantiate(GetRandomFurnitureType().GetRandomFurniturePrefab(), transform.position, transform.rotation);
+        SpawnableFurniture prefab = RandomFurnitureType().RandomFurniturePrefab();
+        prefab.Instantiate(transform.position, transform.rotation);
     }
 
-    private FurnitureType GetRandomFurnitureType()
+    private FurnitureType RandomFurnitureType()
     {
-        return allowedTypes[Random.Range(0, allowedTypes.Length)];
+        return allowedTypes[RandomIndex(relativeProbabilities, total)];
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position, "FurnitureSpawn.png");
     }
 }
