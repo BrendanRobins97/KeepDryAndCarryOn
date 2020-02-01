@@ -63,3 +63,6 @@ crashlytics-build.properties
 
 # MSBuild for Unity
 MSBuildForUnity.Common.props
+
+# Visual Studio Code
+.vscode/
