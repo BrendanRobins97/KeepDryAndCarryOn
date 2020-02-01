@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-static int holes;
+//static int holes;
 public class globals : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class globals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    IEnumerator checkAllWalls();
+    // IEnumerator checkAllWalls();
 }
