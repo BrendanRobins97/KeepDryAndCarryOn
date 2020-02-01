@@ -44,16 +44,16 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Object"))
+        if (collision.attachedRigidbody.GetComponent<PhysicsObject>())
         {
             Debug.Log("target acquired");
-            target = collision.GetComponent<PhysicsObject>();
+            target = collision.attachedRigidbody.GetComponent<PhysicsObject>();
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.CompareTag("Object") && collision.GetComponent<PhysicsObject>() == target)
+        if (collision.attachedRigidbody.GetComponent<PhysicsObject>() && collision.attachedRigidbody.GetComponent<PhysicsObject>() == target)
         {
             target = null;
         }
