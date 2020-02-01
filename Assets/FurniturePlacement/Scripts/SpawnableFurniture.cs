@@ -16,18 +16,13 @@ public class SpawnableFurniture : MonoBehaviour
 
     public void Instantiate(Vector3 position, Quaternion rotation)
     {
-        Instantiate(gameObject, position - spawnOrigin.position, rotation * GetSpawnRotation());
+        Instantiate(gameObject,
+            position - Vector3.Scale(spawnOrigin.localPosition, transform.localScale),
+            randomizeRotation ? rotation * GetRandomRotation() : rotation);
     }
 
-    private Quaternion GetSpawnRotation()
+    private Quaternion GetRandomRotation()
     {
-        if (randomizeRotation)
-        {
-            return transform.rotation * Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-        }
-        else
-        {
-            return transform.rotation;
-        }
+        return Quaternion.Euler(0, Random.Range(0f, 360f), 0);
     }
 }

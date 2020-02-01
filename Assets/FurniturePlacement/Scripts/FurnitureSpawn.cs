@@ -1,27 +1,20 @@
 ﻿using UnityEngine;
-using static RelativeProbability;
+using static WeightedProbability;
 
 public class FurnitureSpawn : MonoBehaviour
 {
     [Tooltip("Furniture types that can be spawned")]
     [SerializeField]
-    private FurnitureType[] allowedTypes;
-
-    [Tooltip("Higher numbers are more likely")]
-    [SerializeField]
-    private int[] relativeProbabilities;
+    private WeightedFurnitureType[] allowedTypes;
 
     private int total = 0;
 
     void Awake()
     {
-        if (allowedTypes.Length != relativeProbabilities.Length)
-            throw new System.Exception("Counts must be equal");
-
-        if (allowedTypes.Length == 0)
+        if (allowedTypes == null || allowedTypes.Length == 0)
             throw new System.Exception("Must have at least one furniture type");
 
-        total = Total(relativeProbabilities);
+        total = TotalWeights<WeightedFurnitureType, FurnitureType>(allowedTypes);
     }
 
     void Start()
@@ -41,7 +34,7 @@ public class FurnitureSpawn : MonoBehaviour
 
     private FurnitureType RandomFurnitureType()
     {
-        return allowedTypes[RandomIndex(relativeProbabilities, total)];
+        return allowedTypes[RandomIndex<WeightedFurnitureType, FurnitureType>(allowedTypes, total)].Item;
     }
 
     void OnDrawGizmos()

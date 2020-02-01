@@ -1,33 +1,26 @@
 ﻿using UnityEngine;
-using static RelativeProbability;
+using static WeightedProbability;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/FurnitureType", order = 1)]
 public class FurnitureType : ScriptableObject
 {
     [Tooltip("Furniture pieces that can be spawned")]
     [SerializeField]
-    private SpawnableFurniture[] possibleFurniture;
-
-    [Tooltip("Higher numbers are more likely")]
-    [SerializeField]
-    private int[] relativeProbabilities;
+    private WeightedSpawnableFurniture[] possibleFurniture;
 
     private int total = 0;
+    private bool initialized;
 
-    void Awake()
+    void OnEnable()
     {
-        if (possibleFurniture.Length != relativeProbabilities.Length)
-            throw new System.Exception("Counts must be equal");
-
-        if (possibleFurniture.Length == 0)
+        if (possibleFurniture == null || possibleFurniture.Length == 0)
             throw new System.Exception("Must have at least one piece of furniture to spawn");
 
-        total = Total(relativeProbabilities);
+        total = TotalWeights<WeightedSpawnableFurniture, SpawnableFurniture>(possibleFurniture);
     }
-
 
     public SpawnableFurniture RandomFurniturePrefab()
     {
-        return possibleFurniture[RandomIndex(relativeProbabilities, total)];
+        return possibleFurniture[RandomIndex<WeightedSpawnableFurniture, SpawnableFurniture>(possibleFurniture, total)].Item;
     }
 }
