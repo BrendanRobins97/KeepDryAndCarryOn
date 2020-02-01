@@ -8,7 +8,8 @@ public class Hand : MonoBehaviour
 {
     public Transform guardian;
     public bool right;
-
+    public Animator handAnimator;
+    public float rotateForce = 1f;
     private GameObject handToFollow;
     private PhysicsObject target;
     private PhysicsObject grabbedObject;
@@ -44,16 +45,25 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.attachedRigidbody.GetComponent<PhysicsObject>())
+        if (!collision.attachedRigidbody)
         {
-            Debug.Log("target acquired");
-            target = collision.attachedRigidbody.GetComponent<PhysicsObject>();
+            return;
+        }
+        PhysicsObject obj = collision.attachedRigidbody.GetComponent<PhysicsObject>();
+        if (obj)
+        {
+            target = obj;
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.attachedRigidbody.GetComponent<PhysicsObject>() && collision.attachedRigidbody.GetComponent<PhysicsObject>() == target)
+        if (!collision.attachedRigidbody)
+        {
+            return;
+        }
+        PhysicsObject obj = collision.attachedRigidbody.GetComponent<PhysicsObject>();
+        if (obj && obj == target)
         {
             target = null;
         }
@@ -79,6 +89,7 @@ public class Hand : MonoBehaviour
     {
         if (obj.pressType == InteractionSourcePressType.Select)
         {
+            handAnimator.SetBool("Grabbed", true);
             grabbedObject = target;
             grabbedObject?.Grab(transform);
         }
@@ -91,31 +102,29 @@ public class Hand : MonoBehaviour
         {
             if (obj.state.thumbstickPosition.magnitude > 0.25f)
             {
-                guardian.Translate(new Vector3(1 * Time.deltaTime * obj.state.thumbstickPosition.x, 0, 1 * Time.deltaTime * obj.state.thumbstickPosition.y), Space.Self);
+                Vector3 cameraDirection = Camera.main.transform.TransformDirection(new Vector3(obj.state.thumbstickPosition.x, 0, obj.state.thumbstickPosition.y));
+                Vector3 direction = new Vector3(cameraDirection.x, 0, cameraDirection.z);
+                guardian.Translate(new Vector3(1 * Time.deltaTime * direction.x, 0, 1 * Time.deltaTime * direction.z), Space.Self);
             }
         }
         if (obj.state.source.handedness == InteractionSourceHandedness.Right)
         {
-            if (obj.state.thumbstickPosition.x > 0.5f)
+            if (grabbedObject)
             {
-                if (canRotate)
+                if (obj.state.thumbstickPosition.magnitude > 0.25f)
                 {
-                    canRotate = false;
-                    guardian.RotateAround(transform.position, Vector3.up, 45f);
+                    float horizontal = obj.state.thumbstickPosition.x;
+                    float vertical = obj.state.thumbstickPosition.y;
+                    Vector3 torque = new Vector3(0, -horizontal * 1, 0);
+                    torque += vertical * transform.right * 1;
+                    grabbedObject.GetComponent<Rigidbody>().AddTorque(torque);
+                }
+                else
+                {
+                    grabbedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 }
             }
-            else if (obj.state.thumbstickPosition.x < -0.5f)
-            {
-                if (canRotate)
-                {
-                    canRotate = false;
-                    guardian.RotateAround(transform.position, Vector3.up, -45f);
-                }
-
-            } else
-            {
-                canRotate = true;
-            }
+            
         }
     }
 
@@ -123,6 +132,7 @@ public class Hand : MonoBehaviour
     {
         if (obj.pressType == InteractionSourcePressType.Select)
         {
+            handAnimator.SetBool("Grabbed", false);
             grabbedObject?.Drop();
         }
     }
