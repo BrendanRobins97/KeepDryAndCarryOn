@@ -24,12 +24,22 @@ public class PhysicsObject : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void LateUpdate()
+    {
+
+        
+
+
+    }
+
+    private void FixedUpdate()
     {
 
         if (snapTarget)
         {
-            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 8 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 5 * Time.fixedDeltaTime);
+            //transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 2 * Time.deltaTime);
+            rb.velocity = Vector3.zero;
             //transform.rotation = snapTarget.rotation;
             //Quaternion.RotateTowards()
             angularVelocity = (snapTarget.eulerAngles - prevRotation) / Time.fixedDeltaTime;
@@ -54,17 +64,6 @@ public class PhysicsObject : MonoBehaviour
                 // rb.isKinematic = true;
             }
         }
-
-
-    }
-
-    private void LateUpdate()
-    {
-        
-        if (snapTarget)
-        {
-            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 8 * Time.deltaTime);
-        }   
 
     }
 
