@@ -24,7 +24,7 @@ public class caster : MonoBehaviour
         if (Input.GetAxis("Fire3") > 0.0 && rdy == true)
         {
             rdy = false;
-            castBoot(myTopLeft.transform.position.x, myBottomRight.transform.position.x, myBottomRight.transform.position.y, myTopLeft.transform.position.y);
+            castBoot(myTopLeft.transform.localPosition.x, myBottomRight.transform.localPosition.x, myBottomRight.transform.localPosition.y, myTopLeft.transform.localPosition.y);
         }
         else if (Input.GetAxis("Fire3") == 0.0)
         {
@@ -42,12 +42,12 @@ public class caster : MonoBehaviour
             xMin = xMax;
             xMax = temp;
         }
-        transform.position = new Vector3(xMin, yMin, transform.position.z);
+        transform.localPosition = new Vector3(xMin, yMin, transform.localPosition.z);
         StartCoroutine(cast(xMin, xMax, yMin, yMax));
     }
     int returnHoles(int myHoles, int myPlugs)
     {
-        print(myHoles+ " "+ holes);
+        print(myHoles);// + " "+ holes);
         corDone = true;
         globals.globalHoles += myHoles;
         print(globals.globalHoles);
@@ -55,17 +55,18 @@ public class caster : MonoBehaviour
     }
     IEnumerator cast(float xMin, float xMax, float yMin, float yMax)
     {
-        var timer = new System.Timers.Timer(16.666666666666667);
+        globals.doneChecker += 1;
+        var timer = new System.Timers.Timer(16.666666666666667);//this is a frame at 60 fps
         timer.Elapsed += (s, e) => timer.Stop();
         timer.Start();
         //timer += Time.deltaTime;
         //print("beep");
-        //print(transform.position.x);
+        //print(transform.localPosition.x);
         //print(xMax);
-        while (transform.position.x < xMax)
+        while (transform.localPosition.x < xMax)
         {
             //print("x");
-            while (transform.position.y < yMax)
+            while (transform.localPosition.y < yMax)
             {
                 if (!timer.Enabled)
                 {
@@ -75,7 +76,7 @@ public class caster : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
-                    //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                    //Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                     //Debug.Log(hit.collider.gameObject.name);
                     if (hit.collider.gameObject.tag == "holecheck")
                         holes += 1;
@@ -84,26 +85,27 @@ public class caster : MonoBehaviour
                         plugs += 1;
                     }
                 }
-                transform.position = new Vector3(transform.position.x, transform.position.y + interval, transform.position.z);
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + interval, transform.localPosition.z);
             }
-            transform.position = new Vector3(transform.position.x, yMin, transform.position.z);
-            transform.position = new Vector3(transform.position.x + interval, transform.position.y, transform.position.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, yMin, transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x + interval, transform.localPosition.y, transform.localPosition.z);
         }
+        globals.doneChecker -= 1;
         returnHoles(holes, plugs);
         //RaycastHit hit;
-        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        //if (Physics.Raycast(transform.localPosition, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         //{
-        //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+        //    Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
         //    Debug.Log(hit.collider.gameObject.name);
         //    if (hit.collider.gameObject.name == "holeTrigger")
         //        holes += 1;
         //}
-        //transform.position = new Vector3(transform.position.x + .2f, transform.position.y, transform.position.z);
-        //if (transform.position.x > xMax)
+        //transform.localPosition = new Vector3(transform.localPosition.x + .2f, transform.localPosition.y, transform.localPosition.z);
+        //if (transform.localPosition.x > xMax)
         //{
-        //    transform.position = new Vector3(xMin, transform.position.y, transform.position.z);
-        //    transform.position = new Vector3(transform.position.x, transform.position.y + .2f, transform.position.z);
-        //    if (transform.position.y > yMax)
+        //    transform.localPosition = new Vector3(xMin, transform.localPosition.y, transform.localPosition.z);
+        //    transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + .2f, transform.localPosition.z);
+        //    if (transform.localPosition.y > yMax)
         //    {
         //        return holes;
         //    }
