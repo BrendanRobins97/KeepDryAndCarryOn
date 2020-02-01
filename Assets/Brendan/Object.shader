@@ -46,7 +46,7 @@
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-			fixed4 glue = tex2D(_GlueTex, IN.uv_MainTex) * float4(1, 1, 1, 0.75f);
+			fixed4 glue = tex2D(_GlueTex, IN.uv_MainTex) * float4(1.4, 1.4, 0.65f, 1);
 			c = lerp(c, glue, _Glue);
 
             o.Albedo = c.rgb;

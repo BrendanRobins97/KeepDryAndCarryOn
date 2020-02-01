@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Leg
+  m_Name: Metal
   m_Shader: {fileID: 4800000, guid: 4af00167fb47c964cb8d3a04e9932640, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -78,5 +78,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.1878163, g: 0.08928897, b: 0.06345832, a: 1}
+    - _Color: {r: 0.11305922, g: 0.10808964, b: 0.12620942, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

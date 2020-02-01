@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7cc65a3ce90d10141866ea2ba19bca64
+guid: 16324412c1f06524ba121cabbdf2e88d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: c72f06e29afbf194fbcfd8960f76624e, type: 2}
+      name: Grip
+    second: {fileID: 2100000, guid: b59eb2d4d0f93e549b5a61590171c4f1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Plastic
-    second: {fileID: 2100000, guid: 596cc65a14e69fd4abda65954770e579, type: 2}
+      name: Metal
+    second: {fileID: 2100000, guid: 101e0d7a6e76c364db33615faa6297d5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

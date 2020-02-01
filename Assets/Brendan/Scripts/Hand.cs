@@ -11,7 +11,7 @@ public class Hand : MonoBehaviour
     public Animator handAnimator;
     public float rotateForce = 1f;
     private GameObject handToFollow;
-    private PhysicsObject target;
+    private List<PhysicsObject> targets = new List<PhysicsObject>();
     private PhysicsObject grabbedObject;
     private bool foundHand;
     private bool canRotate = true;
@@ -41,6 +41,13 @@ public class Hand : MonoBehaviour
 
             }
         }
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (targets[i] == null)
+            {
+                targets.RemoveAt(i);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -52,7 +59,7 @@ public class Hand : MonoBehaviour
         PhysicsObject obj = collision.attachedRigidbody.GetComponent<PhysicsObject>();
         if (obj)
         {
-            target = obj;
+            targets.Add(obj);
         }
     }
 
@@ -63,9 +70,9 @@ public class Hand : MonoBehaviour
             return;
         }
         PhysicsObject obj = collision.attachedRigidbody.GetComponent<PhysicsObject>();
-        if (obj && obj == target)
+        if (obj && targets.Contains(obj))
         {
-            target = null;
+            targets.Remove(obj);
         }
     }
 
@@ -87,10 +94,31 @@ public class Hand : MonoBehaviour
 
     private void InteractionSourcePressed(InteractionSourcePressedEventArgs obj)
     {
+        if ((obj.state.source.handedness == InteractionSourceHandedness.Left && right)
+            || (obj.state.source.handedness == InteractionSourceHandedness.Right && !right))
+        {
+            return;
+        }
+
         if (obj.pressType == InteractionSourcePressType.Select)
         {
             handAnimator.SetBool("Grabbed", true);
-            grabbedObject = target;
+            if (targets.Count <= 0)
+            {
+                return;
+            }
+            grabbedObject = targets[0];
+            if (targets.Count > 1)
+            {
+                for (int i = 1; i < targets.Count; i++)
+                {
+                    if ((targets[i].transform.position - transform.position).sqrMagnitude < (grabbedObject.transform.position - transform.position).sqrMagnitude)
+                    {
+                        grabbedObject = targets[i];
+
+                    }
+                }
+            } 
             grabbedObject?.Grab(transform);
         }
 
@@ -98,13 +126,18 @@ public class Hand : MonoBehaviour
 
     private void InteractionSourceUpdated(InteractionSourceUpdatedEventArgs obj)
     {
+        if ((obj.state.source.handedness == InteractionSourceHandedness.Left && right)
+            || (obj.state.source.handedness == InteractionSourceHandedness.Right && !right))
+        {
+            return;
+        }
         if (obj.state.source.handedness == InteractionSourceHandedness.Left)
         {
             if (obj.state.thumbstickPosition.magnitude > 0.25f)
             {
                 Vector3 cameraDirection = Camera.main.transform.TransformDirection(new Vector3(obj.state.thumbstickPosition.x, 0, obj.state.thumbstickPosition.y));
                 Vector3 direction = new Vector3(cameraDirection.x, 0, cameraDirection.z);
-                guardian.Translate(new Vector3(1 * Time.deltaTime * direction.x, 0, 1 * Time.deltaTime * direction.z), Space.Self);
+                guardian.Translate(new Vector3(2 * Time.deltaTime * direction.x, 0, 2 * Time.deltaTime * direction.z), Space.Self);
             }
         }
         if (obj.state.source.handedness == InteractionSourceHandedness.Right)
@@ -130,10 +163,18 @@ public class Hand : MonoBehaviour
 
     private void InteractionSourceReleased(InteractionSourceReleasedEventArgs obj)
     {
+        if ((obj.state.source.handedness == InteractionSourceHandedness.Left && right)
+            || (obj.state.source.handedness == InteractionSourceHandedness.Right && !right))
+        {
+            return;
+        }
         if (obj.pressType == InteractionSourcePressType.Select)
         {
             handAnimator.SetBool("Grabbed", false);
-            grabbedObject?.Drop();
+            if (grabbedObject != null)
+            {
+                grabbedObject.Drop();
+            }
         }
     }
 
