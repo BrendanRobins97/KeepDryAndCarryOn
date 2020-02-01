@@ -5,17 +5,36 @@ using UnityEngine.UI;
 
 public class timerScript : MonoBehaviour
 {
-    float timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float timer;
+    bool count = false;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        // Pausing
+        if (!count)
+            return;
+
         timer += Time.deltaTime;
-        GetComponent<UnityEngine.UI.Text>().text = timer.ToString("0.00");
+        //GetComponent<UnityEngine.UI.Text>().text = timer.ToString("0.00");
+    }
+
+    public void PauseTimer()
+    {
+        count = false;
+    }
+
+    public void StartTimer()
+    {
+        count = true;
+    }
+
+    public void ResetTime()
+    {
+        timer = 0f;
+    }
+
+    public float GetTime()
+    {
+        return timer;
     }
 }

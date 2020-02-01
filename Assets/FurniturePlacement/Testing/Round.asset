@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd7e722ffe6c3f4dafa832b85bf983f, type: 3}
-  m_Name: Test2
+  m_Name: Round
   m_EditorClassIdentifier: 
-  possibleFurniturePieces:
-  - {fileID: 7835488681078674259, guid: 109479777889b40419c8e7c4e6609722, type: 3}
-  probability: 01000000
+  possibleFurniture:
+  - item: {fileID: 2998266981501379618, guid: 109479777889b40419c8e7c4e6609722, type: 3}
+    weight: 1

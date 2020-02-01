@@ -25,7 +25,7 @@ public class WaterFillController : MonoBehaviour
     public float t;
 
     private bool fill = false;
-    private bool currentlyFilling = false;
+    public bool currentlyFilling = false;
     private float amountToIncreaseHeight = 0f;
     private float currentFillHeight = 0f;
 

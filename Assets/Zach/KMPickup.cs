@@ -14,14 +14,26 @@ public class KMPickup : MonoBehaviour
     Animator leftHandAnim;
     [SerializeField]
     Animator rightHandAnim;
+    public float minZoom = 1;
+    public float maxZoom = 5;
+
+    [SerializeField]
+    NailInventory nailUI;
+
+    private int nails = 0;
     private void Update() {
         GrabInput();
         RotateInput();
+        ZoomInput();
+        NailInput();
         MoveItem();
-        
     }
     private void Awake() {
         camOrigin = GetComponentInChildren<Camera>().transform.parent;
+    }
+    void ZoomInput(){
+        float newZ = Mathf.Clamp(grabPoint.localPosition.z + Input.GetAxis("Mouse ScrollWheel"), minZoom, maxZoom);
+        grabPoint.localPosition = new Vector3(grabPoint.localPosition.x, grabPoint.localPosition.y, newZ);
     }
     void GrabInput(){
         if(!Input.GetKeyDown(KeyCode.Mouse0))
@@ -29,13 +41,19 @@ public class KMPickup : MonoBehaviour
         if(currentItem == null){
             RaycastHit hit;
             Vector3 dir = (grabPoint.position - camOrigin.position).normalized;
-            if (Physics.Raycast(camOrigin.position, dir, out hit, 2))
+            if (Physics.Raycast(camOrigin.position, dir, out hit, 4))
             {
-                print(currentItem);
-                if(hit.transform.GetComponent<Rigidbody>()){
+                if(hit.transform.tag == "Nail"){
+                    if(nails == 10)
+                        return;
+                    AddNail();
+                    Destroy(hit.transform.gameObject);
+                }
+                else if(hit.transform.GetComponent<Rigidbody>()){
                     rightHandAnim.SetBool("Grabbed", true);
                     currentItem = hit.transform;
                     currentItem.GetComponent<Rigidbody>().useGravity = false;
+                    currentItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     currentItem.GetComponent<Rigidbody>().drag = 5f;
                 }
             }
@@ -44,6 +62,8 @@ public class KMPickup : MonoBehaviour
             currentItem.GetComponent<Rigidbody>().drag = 0f;
             currentItem = null;
             rightHandAnim.SetBool("Grabbed", false);
+            rightHandAnim.SetBool("Rotating", false);
+            leftHandAnim.SetBool("Rotating", false);
         }
     }
     void RotateInput(){
@@ -75,5 +95,34 @@ public class KMPickup : MonoBehaviour
         float distance = dir.magnitude;
         dir.Normalize();
         rb.AddForce(dir*distance* distance *grabForce);
+    }
+
+    void NailInput(){
+        if(!Input.GetKeyDown(KeyCode.F))
+            return;
+        if(currentItem == null)
+            return;
+        if(nails <1)
+            return;
+        if(!currentItem.GetComponent<MKObject>().isTouching())
+            return;
+        currentItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        currentItem.GetComponent<Rigidbody>().drag = 0f;
+        currentItem = null;
+        rightHandAnim.SetBool("Grabbed", false);
+        rightHandAnim.SetBool("Rotating", false);
+        leftHandAnim.SetBool("Rotating", false);
+        SubtractNail();
+    }
+    public void AddNail(){
+        nails++;
+        nailUI.Add();
+    }
+    public void SubtractNail(){
+        nails--;
+        nailUI.Subtract();
+    }
+    public int GetNails(){
+        return nails;
     }
 }
