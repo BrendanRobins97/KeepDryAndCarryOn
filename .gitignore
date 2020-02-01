@@ -60,3 +60,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# MSBuild for Unity
+MSBuildForUnity.Common.props

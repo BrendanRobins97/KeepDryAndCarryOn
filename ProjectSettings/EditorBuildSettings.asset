@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Brendan/BrendanScene.unity
-    guid: 694f694bbccc782409ad7a22a318ccff
+    path: Assets/Zach/MainMenu.unity
+    guid: ca24d6ca9f964e74dab1294e876d297a
+  - enabled: 1
+    path: Assets/Zach/FirstPersonTest.unity
+    guid: 647a19f2d4a57c14f80e690cb47fec00
   m_configObjects: {}
