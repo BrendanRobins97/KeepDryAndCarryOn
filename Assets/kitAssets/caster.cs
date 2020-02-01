@@ -52,8 +52,11 @@ public class caster : MonoBehaviour
         timer.Start();
         //timer += Time.deltaTime;
         //print("beep");
+        //print(transform.position.x);
+        //print(xMax);
         while (transform.position.x < xMax)
         {
+            print("x");
             while (transform.position.y < yMax)
             {
                 if (!timer.Enabled)
