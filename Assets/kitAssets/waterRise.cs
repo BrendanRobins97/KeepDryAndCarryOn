@@ -15,15 +15,15 @@ public class waterRise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Fire3") > 0.0 && rdy == true)
-        {
-            rdy = false;
-            Rise(4.0f);
-        }
-        else if (Input.GetAxis("Fire3") == 0.0)
-        {
-            rdy = true;
-        }
+        //if (Input.GetAxis("Fire3") > 0.0 && rdy == true)
+        //{
+        //    rdy = false;
+        //    Rise(4.0f);
+        //}
+        //else if (Input.GetAxis("Fire3") == 0.0)
+        //{
+        //    rdy = true;
+        //}
     }
     void Rise(float val)
     {
