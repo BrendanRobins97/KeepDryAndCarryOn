@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WaterFillController : MonoBehaviour
 {
+    public bool debug = false;
+    public int debugFillPoints = 20000;
+    [Tooltip("The amount of water raising contributed by each fill point.")]
+    public float fillRatio = 0.00001f;
     [Tooltip("Amount to raise the water. Determined by amount of uncovered holes.")]
     [Range(0f, 1f)]
     public float waterFillAmount = 0f;
@@ -33,9 +37,9 @@ public class WaterFillController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.P) && debug)
         {
-            BeginFilling();
+            BeginFilling(debugFillPoints);
         }
 
         if (fill && water.transform.position.y < currentFillHeight-0.01)
@@ -51,10 +55,12 @@ public class WaterFillController : MonoBehaviour
         }
     }
 
-    public void BeginFilling()
+    public void BeginFilling(int numFillPoints)
     {
         if (currentlyFilling)
             return;
+
+        waterFillAmount = numFillPoints * fillRatio;
 
         currentFill += waterFillAmount;
         if (currentFill > 1f)
