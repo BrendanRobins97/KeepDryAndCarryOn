@@ -6,13 +6,17 @@ public class KeyboardMovement : MonoBehaviour
 {
     #region Variables
     Camera cam;
+    Transform camPivot;
     CharacterController charCon;
+
+    Animator camAnim;
     
     float movementSpeed = 5f;
     float sprintScale = 1.5f;
     float cameraHorizontalSpeed = 3f;
     float cameraVerticalSpeed = 2f;
     public bool invert = true;
+
     Vector3 movement;
     #endregion
     #region Event Functions
@@ -21,6 +25,8 @@ public class KeyboardMovement : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        camAnim = cam.GetComponent<Animator>();
+        camPivot = cam.transform.parent;
     }
     void Update(){
         MovementInput();
@@ -46,16 +52,18 @@ public class KeyboardMovement : MonoBehaviour
         movement.Normalize();
     }
     void CameraInput(){
+        if(Input.GetKey(KeyCode.Mouse1))
+            return;
         float horizontal = Input.GetAxisRaw("Mouse X");
         float vertical = Input.GetAxisRaw("Mouse Y");
         if(invert)
             vertical*=-1;
         transform.Rotate(0,horizontal*cameraHorizontalSpeed,0);
         
-        cam.transform.Rotate(vertical*cameraVerticalSpeed,0,0);
-        float angle = cam.transform.eulerAngles.x;
+        camPivot.transform.Rotate(vertical*cameraVerticalSpeed,0,0);
+        float angle = camPivot.transform.eulerAngles.x;
         angle = (angle > 180) ? angle - 360 : angle;
-        cam.transform.localEulerAngles = new Vector3( Mathf.Clamp( angle, -60, 60), 0, 0);
+        camPivot.transform.localEulerAngles = new Vector3( Mathf.Clamp( angle, -60, 60), 0, 0);
         
     }
     #endregion
@@ -65,6 +73,7 @@ public class KeyboardMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
             speed *= sprintScale;
         charCon.SimpleMove(movement*speed);
+        camAnim.SetFloat("Speed", movement.magnitude*(speed/movementSpeed));
     }
     #endregion
 }
