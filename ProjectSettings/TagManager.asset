@@ -5,12 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Object
-<<<<<<< HEAD
-  - Nail
-=======
-  - hole
-  - holecheck
->>>>>>> f4fa17322433043ce5000fde07833a50c3d96ff8
   layers:
   - Default
   - TransparentFX
@@ -43,7 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - Spatial Awareness
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
