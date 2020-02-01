@@ -36,6 +36,12 @@ public class caster : MonoBehaviour
         holes = 0;
         plugs = 0;
         corDone = false;
+        if (xMin > xMax)
+        {
+            float temp = xMin;
+            xMin = xMax;
+            xMax = temp;
+        }
         transform.position = new Vector3(xMin, yMin, transform.position.z);
         StartCoroutine(cast(xMin, xMax, yMin, yMax));
     }
@@ -43,6 +49,8 @@ public class caster : MonoBehaviour
     {
         print(myHoles+ " "+ holes);
         corDone = true;
+        globals.globalHoles += myHoles;
+        print(globals.globalHoles);
         return (myHoles);
     }
     IEnumerator cast(float xMin, float xMax, float yMin, float yMax)
@@ -56,7 +64,7 @@ public class caster : MonoBehaviour
         //print(xMax);
         while (transform.position.x < xMax)
         {
-            print("x");
+            //print("x");
             while (transform.position.y < yMax)
             {
                 if (!timer.Enabled)
@@ -69,7 +77,7 @@ public class caster : MonoBehaviour
                 {
                     //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                     //Debug.Log(hit.collider.gameObject.name);
-                    if (hit.collider.gameObject.tag == "hole")
+                    if (hit.collider.gameObject.tag == "holecheck")
                         holes += 1;
                     else
                     {
