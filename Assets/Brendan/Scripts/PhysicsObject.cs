@@ -24,9 +24,9 @@ public class PhysicsObject : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
+
         if (snapTarget)
         {
             transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 8 * Time.deltaTime);
@@ -39,7 +39,7 @@ public class PhysicsObject : MonoBehaviour
 
         prevPosition = transform.position;
 
-        foreach (var renderer in GetComponentsInChildren<MeshRenderer>()   )
+        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
         {
             foreach (Material material in renderer.materials)
             {
@@ -51,10 +51,20 @@ public class PhysicsObject : MonoBehaviour
             if (glued && objectsCollidingWith.Count > 0)
             {
                 //rb.useGravity = false;
-               // rb.isKinematic = true;
+                // rb.isKinematic = true;
             }
         }
+
+
+    }
+
+    private void LateUpdate()
+    {
         
+        if (snapTarget)
+        {
+            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 8 * Time.deltaTime);
+        }   
 
     }
 

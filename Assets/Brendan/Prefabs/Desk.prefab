@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromHand: 2
+  grabbed: 0
 --- !u!114 &9138119830338132552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -203256877336866743, guid: 639db3959e0e4ba47b8fea76c314717d, type: 3}
+  - {fileID: 2100000, guid: b0611a48ecedc0641aa79f24deb238d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
