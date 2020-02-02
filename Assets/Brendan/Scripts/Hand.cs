@@ -113,7 +113,11 @@ public class Hand : MonoBehaviour
 
     private void GetClosestTarget()
     {
-        grabbedObject?.Target();
+        if (grabbedObject != null)
+        {
+            grabbedObject?.Target();
+        }
+
         if (targets.Count <= 0)
         {
             closestTarget = null;
