@@ -15,25 +15,26 @@ public class RoundController : MonoBehaviour
 
     private bool betweenRounds = false;
     private bool dead = false;
+    private bool filling = false;
 
     private WaterFillController fillCon;
     private timerScript timer;
     private WallController wallCon;
-    // private Raycaster caster;
+    private globals raycaster;
 
     private void Start()
     {
         fillCon = gameObject.GetComponent<WaterFillController>();
         timer = gameObject.GetComponent<timerScript>();
         wallCon = gameObject.GetComponent<WallController>();
-        // caster = gameObject.GetComponent<Raycaster>();
+        raycaster = gameObject.GetComponent<globals>();
 
         timer.StartTimer();
     }
 
     private void Update()
     {
-        // Check if the timer has reached time
+        // Debugging
         if(Input.GetKeyDown(KeyCode.M) && debug && !betweenRounds)
         {
             betweenRounds = true;
@@ -43,12 +44,13 @@ public class RoundController : MonoBehaviour
             betweenRounds = false;
         }
 
-        if(timer.GetTime() >= roundLength && !betweenRounds)
+        // Check if done raycasting
+        // Begin filling
+        if (betweenRounds && globals.doneChecker == 0 && filling)
         {
-            betweenRounds = true;
-            timer.PauseTimer();
-            fillCon.BeginFilling(debugFillPoints);
-
+            fillCon.BeginFilling(globals.globalHoles);
+            filling = false;
+            // Game Over
             if (fillCon.currentFill >= 1)
             {
                 Debug.Log("ded :(");
@@ -56,7 +58,17 @@ public class RoundController : MonoBehaviour
             }
         }
 
-        if (betweenRounds && !fillCon.currentlyFilling && !dead)
+        // Fire the raycast
+        if (timer.GetTime() >= roundLength && !betweenRounds)
+        {
+            betweenRounds = true;
+            filling = true;
+            timer.PauseTimer();
+            raycaster.FireFunction(); // Startfiring raycast
+        }
+
+        // Start a new round
+        if (betweenRounds && !fillCon.currentlyFilling && !dead && globals.doneChecker == 0 && !filling)
         {
             StartNewRound();
         }
@@ -64,6 +76,7 @@ public class RoundController : MonoBehaviour
 
     private void StartNewRound()
     {
+        globals.globalHoles = 0;
         wallCon.AddHoles(holesAddedPerRound);
         roundsSurvived++;
         timer.ResetTime();
