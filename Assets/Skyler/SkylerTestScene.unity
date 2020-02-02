@@ -3242,11 +3242,6 @@ PrefabInstance:
       propertyPath: water
       value: 
       objectReference: {fileID: 993528468}
-    - target: {fileID: 8999876809524932295, guid: af8245887f346fd459f7a765374c5d35,
-        type: 3}
-      propertyPath: fillRatio
-      value: 0.00001
-      objectReference: {fileID: 0}
     - target: {fileID: 8999876809524932312, guid: af8245887f346fd459f7a765374c5d35,
         type: 3}
       propertyPath: currentWalls.Array.data[0]
@@ -3347,10 +3342,5 @@ PrefabInstance:
       propertyPath: currentWalls.Array.data[19]
       value: 
       objectReference: {fileID: 1104249300}
-    - target: {fileID: 8999876809524932313, guid: af8245887f346fd459f7a765374c5d35,
-        type: 3}
-      propertyPath: roundLength
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af8245887f346fd459f7a765374c5d35, type: 3}
