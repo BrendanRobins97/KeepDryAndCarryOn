@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 884c86481f8c9444a87bbb82c40bf770
+guid: 5d53262b53a484d4991e0c20053ed380
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grip
-    second: {fileID: 2100000, guid: 32fd36c6989ed9d4ca099c802455c9e1, type: 2}
+      name: Bottle
+    second: {fileID: 2100000, guid: 4f5eaca8382dd9c41b090cdfa4d8a0de, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: edbe16b99ce6a1241a9f4faea1e6f83d, type: 2}
+      name: Nozzle
+    second: {fileID: 2100000, guid: 4400851a0b56e6c4f972e0e34be93c80, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

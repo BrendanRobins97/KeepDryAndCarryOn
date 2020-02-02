@@ -16,7 +16,6 @@ public class PhysicsObject : MonoBehaviour
 
     private bool glued = false;
     private bool stuck = false;
-
     [HideInInspector]
     public bool grabbed = false;
 
@@ -26,10 +25,9 @@ public class PhysicsObject : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         if (snapTarget)
         {
-            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 5 * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 8 * Time.fixedDeltaTime);
             //transform.position = Vector3.Lerp(transform.position, snapTarget.position + snapTarget.forward * distanceFromHand, 2 * Time.deltaTime);
             rb.velocity = Vector3.zero;
             //transform.rotation = snapTarget.rotation;
@@ -52,8 +50,8 @@ public class PhysicsObject : MonoBehaviour
         {
             if (glued && objectsCollidingWith.Count > 0)
             {
-                //rb.useGravity = false;
-                // rb.isKinematic = true;
+                rb.useGravity = false;
+                rb.isKinematic = true;
             }
         }
 
@@ -91,7 +89,6 @@ public class PhysicsObject : MonoBehaviour
         rb.useGravity = false;
         grabbed = true;
         rb.isKinematic = false;
-
     }
 
     public void Drop()
@@ -106,7 +103,7 @@ public class PhysicsObject : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.useGravity = true;
-            rb.velocity = velocity;
+            rb.velocity = velocity * 1.1f;
             rb.angularVelocity = angularVelocity;
         }
         grabbed = false;
@@ -118,6 +115,7 @@ public class PhysicsObject : MonoBehaviour
         if (other.rigidbody && other.rigidbody.CompareTag("Glue") && other.rigidbody.GetComponent<PhysicsObject>().grabbed)
         {
             glued = true;
+            Destroy(other.gameObject.GetComponent<PhysicsObject>());
             Destroy(other.gameObject);
         } else
         {
