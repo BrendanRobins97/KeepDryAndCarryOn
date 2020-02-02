@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2106341160671022786}
   - component: {fileID: 8639399869566631768}
   - component: {fileID: 5874484621503195369}
+  - component: {fileID: 1554079358315704621}
   m_Layer: 0
   m_Name: GlueBottle
   m_TagString: Glue
@@ -31,6 +32,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 7380172124478981674}
+  - {fileID: 3098824414633412087}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,6 +79,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.65, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1554079358315704621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750170760182980986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02854be370bc33e4386ffda97ead5ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizeRotation: 1
+  spawnOrigin: {fileID: 3098824414633412087}
+--- !u!1 &8882940579728299739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3098824414633412087}
+  m_Layer: 0
+  m_Name: SpawnOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3098824414633412087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882940579728299739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.351, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8761731152883848041}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9113116680948625790
 GameObject:
   m_ObjectHideFlags: 0
