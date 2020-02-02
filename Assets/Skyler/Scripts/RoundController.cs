@@ -68,6 +68,7 @@ public class RoundController : MonoBehaviour
                     PlayerPrefs.Save();
                 }
 
+                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 Debug.Log("ded :(");
                 dead = true;
