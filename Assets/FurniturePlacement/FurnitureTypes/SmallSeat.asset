@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd7e722ffe6c3f4dafa832b85bf983f, type: 3}
+  m_Name: SmallSeat
+  m_EditorClassIdentifier: 
+  possibleFurniture:
+  - item: {fileID: 1174450151364926200, guid: fab33636daeee4b408dfd257e786ea58, type: 3}
+    weight: 2
+  - item: {fileID: 3334900950072806653, guid: a3b4c2de346ca5243af52eac2418a7c4, type: 3}
+    weight: 1
