@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8354248824056111920}
   - component: {fileID: 5194121759826687395}
   - component: {fileID: 629340861123793472}
+  - component: {fileID: 8656882154268590668}
   m_Layer: 0
   m_Name: Coffin
   m_TagString: Untagged
@@ -109,6 +110,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromHand: 1
   grabbed: 0
+--- !u!114 &8656882154268590668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917162585907329913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &601687458782468977
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 8875008085379807218}
   - component: {fileID: 3625283591731091314}
   - component: {fileID: 3751542122146711134}
+  - component: {fileID: 7812880221520091361}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -72,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 8118475031083356537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 7065469786113211926}
   - {fileID: 6911880520587825723}
@@ -123,6 +124,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 6911880520587825723}
+--- !u!114 &7812880221520091361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8118475031083356537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7065469786113598614
 PrefabInstance:
   m_ObjectHideFlags: 0

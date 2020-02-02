@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8639399869566631768}
   - component: {fileID: 5874484621503195369}
   - component: {fileID: 1554079358315704621}
+  - component: {fileID: -6021551946676173292}
   m_Layer: 0
   m_Name: GlueBottle
   m_TagString: Glue
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 3098824414633412087}
+--- !u!114 &-6021551946676173292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750170760182980986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8882940579728299739
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: -865069442876151769}
   - component: {fileID: 4852299563376396611}
   - component: {fileID: 842474351004815641}
+  - component: {fileID: 8248269797430768574}
   m_Layer: 0
   m_Name: NightStand
   m_TagString: Object
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 1766621029100718887}
+--- !u!114 &8248269797430768574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151838369204399724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5400787367838661177
 GameObject:
   m_ObjectHideFlags: 0

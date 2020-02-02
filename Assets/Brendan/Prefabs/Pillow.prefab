@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -5816741290490673815}
   - component: {fileID: -6692350474315269563}
   - component: {fileID: 122591005467254573}
+  - component: {fileID: 6141410586815291914}
   m_Layer: 0
   m_Name: Pillow
   m_TagString: Object
@@ -79,6 +80,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 4441277626118408752}
+--- !u!114 &6141410586815291914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644720583549659127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5811553069053151542
 GameObject:
   m_ObjectHideFlags: 0

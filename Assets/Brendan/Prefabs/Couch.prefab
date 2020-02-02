@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 1371145131}
   - component: {fileID: 1371145130}
   - component: {fileID: 4949546491219149736}
+  - component: {fileID: -1457892130930950607}
   m_Layer: 0
   m_Name: Couch
   m_TagString: Object
@@ -277,6 +278,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 6046638632444025690}
+--- !u!114 &-1457892130930950607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108470071796731359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8344593943892751023
 PrefabInstance:
   m_ObjectHideFlags: 0

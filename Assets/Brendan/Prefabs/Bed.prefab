@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1089540731670073684}
   - component: {fileID: 8992821324832393291}
   - component: {fileID: 1277340592516650196}
+  - component: {fileID: 5858415552378395248}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Object
@@ -94,6 +95,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromHand: 1
   grabbed: 0
+--- !u!114 &5858415552378395248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146523193954979691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &2286356994724710250
 MeshCollider:
   m_ObjectHideFlags: 0
