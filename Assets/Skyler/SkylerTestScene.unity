@@ -1672,6 +1672,7 @@ GameObject:
   - component: {fileID: 1238898736}
   - component: {fileID: 1238898737}
   - component: {fileID: 1238898738}
+  - component: {fileID: 1238898739}
   m_Layer: 0
   m_Name: Gameplay Controller
   m_TagString: Untagged
@@ -1782,7 +1783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 0
   debugFillPoints: 200000
-  roundLength: 5
+  roundLength: 15
   holesAddedPerRound: 1
   roundsSurvived: 0
 --- !u!114 &1238898738
@@ -1798,6 +1799,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+--- !u!114 &1238898739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238898733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22aa1de107ef7ad4c9841f04fd40a15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holeZones: []
 --- !u!1001 &1286007646
 PrefabInstance:
   m_ObjectHideFlags: 0
