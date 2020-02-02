@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5897422910843143919}
   - component: {fileID: 2333483764977889475}
   - component: {fileID: 5773374284500201321}
+  - component: {fileID: 5453626872184679391}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -109,6 +110,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 9140266576688474377}
+--- !u!114 &5453626872184679391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560310856130775847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &6047044301342039907
 MeshCollider:
   m_ObjectHideFlags: 0

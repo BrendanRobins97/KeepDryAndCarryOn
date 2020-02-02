@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 7054141033710218413}
   - component: {fileID: 7865028055509465450}
   - component: {fileID: 1134327099506701583}
+  - component: {fileID: -308593230549084433}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -123,6 +124,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 6238572475066360433}
+--- !u!114 &-308593230549084433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8744921512521863522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8135424050708682230
 PrefabInstance:
   m_ObjectHideFlags: 0

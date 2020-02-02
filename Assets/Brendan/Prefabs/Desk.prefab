@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1844999262048870552}
   - component: {fileID: 2696521893795590524}
   - component: {fileID: 9138119830338132552}
+  - component: {fileID: -5813338998001276174}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -128,6 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 1020142439084874785}
+--- !u!114 &-5813338998001276174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060729286310395310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &9159297196351551601
 MeshCollider:
   m_ObjectHideFlags: 0

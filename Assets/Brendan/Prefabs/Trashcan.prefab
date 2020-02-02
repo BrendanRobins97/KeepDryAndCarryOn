@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 2573557787922618106}
   - component: {fileID: 3182386294542313433}
   - component: {fileID: 4401573533670120447}
+  - component: {fileID: 7498168020526856467}
   m_Layer: 0
   m_Name: Trashcan
   m_TagString: Object
@@ -172,6 +173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 3476548781129037027}
+--- !u!114 &7498168020526856467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909705073519729108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8198861955904362164
 GameObject:
   m_ObjectHideFlags: 0

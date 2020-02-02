@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9191654933689165629}
   - component: {fileID: 515496743111996108}
+  - component: {fileID: 1497048011929637014}
   m_Layer: 0
-  m_Name: Two Chairs
+  m_Name: TwoChairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +49,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 3307733379815237810}
+--- !u!114 &1497048011929637014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871163427705202388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6104892775118666022
 GameObject:
   m_ObjectHideFlags: 0

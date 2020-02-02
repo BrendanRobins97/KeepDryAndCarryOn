@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 1582512925366069317}
   - component: {fileID: 5282711999526427798}
   - component: {fileID: 2957758384111776721}
+  - component: {fileID: -3839019993627400450}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 7087332398604869046}
+--- !u!114 &-3839019993627400450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2692642700915960222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5450476627458891041
 GameObject:
   m_ObjectHideFlags: 0
