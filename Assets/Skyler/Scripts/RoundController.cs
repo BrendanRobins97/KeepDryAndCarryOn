@@ -9,9 +9,7 @@ public class RoundController : MonoBehaviour
     [Tooltip("The amount of time in seconds before a round ends.")]
     public float roundLength = 60f;
     public int holesAddedPerRound = 1;
-
-    [SerializeField]
-    private int roundsSurvived = 0;
+    public int roundsSurvived = 0;
 
     private bool betweenRounds = false;
     private bool dead = false;

@@ -19,7 +19,7 @@ public class globals : MonoBehaviour
     {
         //if (holeZones == null)
         holeZones = GameObject.FindGameObjectsWithTag("holecheck");
-        print(holeZones.Length);
+        //print(holeZones.Length);
         //print(doneChecker);
     }
 

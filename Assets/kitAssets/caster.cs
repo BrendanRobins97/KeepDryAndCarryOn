@@ -19,7 +19,7 @@ public class caster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        interval = .01f;
+        interval = .02f;
         globals.FireEvent.AddListener(StartCast);
     }
 
