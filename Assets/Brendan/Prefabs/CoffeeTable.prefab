@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7363959682221692289}
   - component: {fileID: -4061933604036971404}
   - component: {fileID: 2077708660447744310}
+  - component: {fileID: -2357441503242956000}
   m_Layer: 0
   m_Name: CoffeeTable
   m_TagString: Object
@@ -111,6 +112,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   spawnOrigin: {fileID: 5705526109944362272}
+--- !u!114 &-2357441503242956000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508060098697473708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4730004699856622385
 GameObject:
   m_ObjectHideFlags: 0

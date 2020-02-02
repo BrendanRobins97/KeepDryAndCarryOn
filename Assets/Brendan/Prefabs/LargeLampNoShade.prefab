@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2615272223985470893}
   - component: {fileID: -7540146041718711073}
   - component: {fileID: 1812703552587879766}
+  - component: {fileID: -2095265879401441661}
   m_Layer: 0
   m_Name: LargeLampNoShade
   m_TagString: Object
@@ -79,6 +80,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 176087832468629937}
+--- !u!114 &-2095265879401441661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241279588251849857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4420458084277925788
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 3579743443056783980}
   - component: {fileID: 259961613964665084}
   - component: {fileID: 4849240174733071769}
+  - component: {fileID: 500147929193904798}
   m_Layer: 0
   m_Name: LongBook
   m_TagString: Untagged
@@ -123,6 +124,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 3132048965902482658}
+--- !u!114 &500147929193904798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476048166597066666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8893031261970083598
 PrefabInstance:
   m_ObjectHideFlags: 0

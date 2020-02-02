@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2573871519520628920}
   - component: {fileID: 2470165952933949110}
   - component: {fileID: 6369003840461279795}
+  - component: {fileID: -3368596635759505817}
   m_Layer: 0
   m_Name: EarthModel
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4969027919108158322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 5967813441199414666}
   - {fileID: 1303687884898286715}
@@ -79,6 +80,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 1
   spawnOrigin: {fileID: 1303687884898286715}
+--- !u!114 &-3368596635759505817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969027919108158322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12caf9cfffb695e4c876988f025601dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5352183206357225203
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5352183206357225203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.003, z: 0}
+  m_LocalPosition: {x: 0, y: -0.00268, z: 0.00249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8796744984294580835}
