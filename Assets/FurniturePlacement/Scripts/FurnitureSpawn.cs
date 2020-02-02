@@ -39,6 +39,6 @@ public class FurnitureSpawn : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawIcon(transform.position, "FurnitureSpawn.png");
+        Gizmos.DrawIcon(transform.position, "FurnitureSpawn.png", true);
     }
 }
