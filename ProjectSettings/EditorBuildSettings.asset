@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Skyler/SkylerTestScene.unity
     guid: 569f46935c2c0ee46af1fa09ecd8161c
+  - enabled: 1
+    path: Assets/Trevor/Layout.unity
+    guid: 74ab608e90f375545925f02da0331fbf
   m_configObjects: {}
