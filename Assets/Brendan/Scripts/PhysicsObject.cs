@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,15 +24,6 @@ public class PhysicsObject : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    private void LateUpdate()
-    {
-
-        
-
-
-    }
-
     private void FixedUpdate()
     {
 
@@ -66,6 +58,31 @@ public class PhysicsObject : MonoBehaviour
         }
 
     }
+
+    public void Target()
+    {
+        foreach (Renderer outline in GetComponentsInChildren<Renderer>())
+        {
+            foreach (Material material in outline.materials)
+            {
+                material.SetFloat("_Highlight", 1);
+
+            }
+        }
+    }
+
+    public void Untarget()
+    {
+        foreach (Renderer outline in GetComponentsInChildren<Renderer>())
+        {
+            foreach (Material material in outline.materials)
+            {
+                material.SetFloat("_Highlight", 0);
+
+            }
+        }
+    }
+
 
     public void Grab(Transform grabber)
     {
