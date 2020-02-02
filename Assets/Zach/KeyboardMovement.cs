@@ -63,7 +63,7 @@ public class KeyboardMovement : MonoBehaviour
         camPivot.transform.Rotate(vertical*cameraVerticalSpeed,0,0);
         float angle = camPivot.transform.eulerAngles.x;
         angle = (angle > 180) ? angle - 360 : angle;
-        camPivot.transform.localEulerAngles = new Vector3( Mathf.Clamp( angle, -60, 60), 0, 0);
+        camPivot.transform.localEulerAngles = new Vector3( Mathf.Clamp( angle, -80, 80), 0, 0);
         
     }
     #endregion
