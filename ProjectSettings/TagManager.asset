@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Object
-  - Glue
+  - UI
   - holecheck
   layers:
   - Default
@@ -39,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - Spatial Awareness
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
