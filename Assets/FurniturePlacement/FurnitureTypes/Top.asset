@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd7e722ffe6c3f4dafa832b85bf983f, type: 3}
+  m_Name: Top
+  m_EditorClassIdentifier: 
+  possibleFurniture:
+  - item: {fileID: 6820573209457571665, guid: 2e330f994768164478cd464e2ae91d88, type: 3}
+    weight: 1
+  - item: {fileID: 3437392982881799665, guid: 610887156ebc54148aed86fc1c668aba, type: 3}
+    weight: 1
+  - item: {fileID: 3437392982881799665, guid: 610887156ebc54148aed86fc1c668aba, type: 3}
+    weight: 1
+  - item: {fileID: 8924712277008539537, guid: 56ce3e21103f3374c9493c06606fa75a, type: 3}
+    weight: 1
+  - item: {fileID: 7046447290783618556, guid: 46c6600b4b33e734f90b870e3f3e51c9, type: 3}
+    weight: 1
+  - item: {fileID: 6820573209457571665, guid: 2e330f994768164478cd464e2ae91d88, type: 3}
+    weight: 1
+  - item: {fileID: 3437392982881799665, guid: 610887156ebc54148aed86fc1c668aba, type: 3}
+    weight: 1
+  - item: {fileID: 5185740725527495438, guid: 8b7347299b886b6479909d52293bc802, type: 3}
+    weight: 1
