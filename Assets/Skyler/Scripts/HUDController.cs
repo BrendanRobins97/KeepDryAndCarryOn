@@ -23,15 +23,23 @@ public class HUDController : MonoBehaviour
 
         timer.text = rc.roundLength.ToString();
         rounds.text = "0";
-        waterLevel.text = "0/%";
+        waterLevel.text = "0%";
         waterOverlay.enabled = false;
     }
 
     private void Update()
     {
-        timer.text = (rc.roundLength - ts.timer).ToString("0.00");
+        if((rc.roundLength - ts.timer) < 0f)
+        {
+            timer.text = "0.00";
+        }
+        else
+        {
+            timer.text = (rc.roundLength - ts.timer).ToString("0.00");
+        }
+
         rounds.text = rc.roundsSurvived.ToString();
-        waterLevel.text = (wfc.currentFill * 100).ToString() + "/%";
+        waterLevel.text = (wfc.currentFill * 100).ToString("0.00") + "%";
 
         if(wfc.currentFill >= waterOverlayThreshold)
         {
