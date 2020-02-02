@@ -121,6 +121,9 @@ public class KMPickup : MonoBehaviour
             return;
         currentItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         currentItem.GetComponent<Rigidbody>().drag = 0f;
+        if(currentItem.GetComponent<AudioSource>()){
+            currentItem.GetComponent<AudioSource>().Stop();
+        }
         currentItem = null;
         rightHandAnim.SetBool("Grabbed", false);
         rightHandAnim.SetBool("Rotating", false);
