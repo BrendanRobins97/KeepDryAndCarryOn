@@ -112,7 +112,7 @@ public class PhysicsObject : MonoBehaviour
     private List<GameObject> objectsCollidingWith = new List<GameObject>();
     private void OnCollisionEnter(Collision other)
     {
-        if (other.rigidbody && other.rigidbody.CompareTag("Glue") && other.rigidbody.GetComponent<PhysicsObject>().grabbed)
+        if (!gameObject.CompareTag("Glue") && other.rigidbody && other.rigidbody.CompareTag("Glue") && other.rigidbody.GetComponent<PhysicsObject>().grabbed)
         {
             glued = true;
             Destroy(other.gameObject.GetComponent<PhysicsObject>());
