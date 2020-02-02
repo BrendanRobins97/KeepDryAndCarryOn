@@ -32,7 +32,7 @@ MonoBehaviour:
   - item: {fileID: 4479421607943779503, guid: 374efda4b01d30e4987cd69a479353cf, type: 3}
     weight: 1
   - item: {fileID: 6262726165258817189, guid: 3a906eddb2ddde143b4a5fbaeaad60b8, type: 3}
-    weight: 100
+    weight: 1
   - item: {fileID: 4146520482645856658, guid: c79fd48ca2e07d94c96e6debf50f2312, type: 3}
     weight: 1
   - item: {fileID: 1211513818862181002, guid: 73756f252f78ff64396565d56b0550df, type: 3}
