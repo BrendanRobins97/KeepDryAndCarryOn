@@ -52,8 +52,13 @@ public class KeyboardMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
             movement += transform.right;
         movement.Normalize();
-        if(Input.GetKeyDown(KeyCode.Space))
-            verticalVelocity = jumpForce;
+        if(Input.GetKeyDown(KeyCode.Space)){
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+            {
+                 verticalVelocity = jumpForce;
+            }
+        }
     }
     void CameraInput(){
         if(Input.GetKey(KeyCode.Mouse1))
