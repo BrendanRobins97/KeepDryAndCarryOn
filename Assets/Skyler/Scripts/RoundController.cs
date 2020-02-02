@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundController : MonoBehaviour
 {
@@ -48,11 +49,30 @@ public class RoundController : MonoBehaviour
         {
             fillCon.BeginFilling(globals.globalHoles);
             filling = false;
+
             // Game Over
             if (fillCon.currentFill >= 1)
             {
+                // Set a new high score if we did better than the curent high score
+                if (PlayerPrefs.HasKey("HighScore"))
+                {
+                    if (PlayerPrefs.GetInt("HighScore") < roundsSurvived)
+                    {
+                        PlayerPrefs.SetInt("HighScore", roundsSurvived);
+                        PlayerPrefs.Save();
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("HighScore", roundsSurvived);
+                    PlayerPrefs.Save();
+                }
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Debug.Log("ded :(");
                 dead = true;
+                SceneManager.LoadScene("MainMenu");
             }
         }
 

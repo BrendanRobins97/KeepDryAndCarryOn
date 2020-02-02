@@ -19,7 +19,7 @@ public class KMPickup : MonoBehaviour
 
     [SerializeField]
     NailInventory nailUI;
-
+    AudioSource sound;
     private int nails = 0;
     private void Update() {
         GrabInput();
@@ -30,6 +30,8 @@ public class KMPickup : MonoBehaviour
     }
     private void Awake() {
         camOrigin = GetComponentInChildren<Camera>().transform.parent;
+        sound = GetComponent<AudioSource>();
+        grabPoint.localPosition = new Vector3(grabPoint.localPosition.x, grabPoint.localPosition.y, minZoom);
     }
     void ZoomInput(){
         float newZ = Mathf.Clamp(grabPoint.localPosition.z + Input.GetAxis("Mouse ScrollWheel"), minZoom, maxZoom);
@@ -55,15 +57,23 @@ public class KMPickup : MonoBehaviour
                     currentItem.GetComponent<Rigidbody>().useGravity = false;
                     currentItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     currentItem.GetComponent<Rigidbody>().drag = 5f;
+                    if(currentItem.GetComponent<AudioSource>()){
+                        currentItem.GetComponent<AudioSource>().Play();
+                    }
                 }
             }
         }else{
             currentItem.GetComponent<Rigidbody>().useGravity = true;
             currentItem.GetComponent<Rigidbody>().drag = 0f;
+            if(currentItem.GetComponent<AudioSource>()){
+                currentItem.GetComponent<AudioSource>().Stop();
+            }
             currentItem = null;
             rightHandAnim.SetBool("Grabbed", false);
             rightHandAnim.SetBool("Rotating", false);
             leftHandAnim.SetBool("Rotating", false);
+            sound.Stop();
+            
         }
     }
     void RotateInput(){
@@ -82,9 +92,12 @@ public class KMPickup : MonoBehaviour
             currentItem.GetComponent<Rigidbody>().AddTorque(torque);
             leftHandAnim.SetBool("Rotating", true);
             rightHandAnim.SetBool("Rotating", true);
+            if(!sound.isPlaying)
+                sound.Play();
         }else{
             leftHandAnim.SetBool("Rotating", false);
             rightHandAnim.SetBool("Rotating", false);
+            sound.Stop();
         }
     }
     void MoveItem(){
@@ -112,6 +125,7 @@ public class KMPickup : MonoBehaviour
         rightHandAnim.SetBool("Grabbed", false);
         rightHandAnim.SetBool("Rotating", false);
         leftHandAnim.SetBool("Rotating", false);
+        sound.Stop();
         SubtractNail();
     }
     public void AddNail(){
