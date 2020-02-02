@@ -43,7 +43,7 @@ public class KMPickup : MonoBehaviour
             Vector3 dir = (grabPoint.position - camOrigin.position).normalized;
             if (Physics.Raycast(camOrigin.position, dir, out hit, 4))
             {
-                if(hit.transform.tag == "Nail"){
+                if(hit.transform.tag == "Glue"){
                     if(nails == 10)
                         return;
                     AddNail();

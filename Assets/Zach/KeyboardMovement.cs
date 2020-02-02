@@ -16,6 +16,8 @@ public class KeyboardMovement : MonoBehaviour
     float cameraHorizontalSpeed = 3f;
     float cameraVerticalSpeed = 2f;
     public bool invert = true;
+    public float jumpForce = 100;
+    private float verticalVelocity = 0;
 
     Vector3 movement;
     #endregion
@@ -50,6 +52,8 @@ public class KeyboardMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
             movement += transform.right;
         movement.Normalize();
+        if(Input.GetKeyDown(KeyCode.Space))
+            verticalVelocity = jumpForce;
     }
     void CameraInput(){
         if(Input.GetKey(KeyCode.Mouse1))
@@ -70,9 +74,17 @@ public class KeyboardMovement : MonoBehaviour
     #region Physics
     void ApplyMovement(){
         float speed = movementSpeed;
+        float y = transform.position.y;
         if(Input.GetKey(KeyCode.LeftShift))
             speed *= sprintScale;
         charCon.SimpleMove(movement*speed);
+        if(verticalVelocity > 0){
+            y = y - transform.position.y;
+            charCon.Move(Vector3.up * y);
+            charCon.Move(Vector3.up * verticalVelocity*Time.deltaTime);
+            verticalVelocity = Mathf.Max(verticalVelocity - Physics.gravity.magnitude*Time.deltaTime,0);
+        }
+        
         camAnim.SetFloat("Speed", movement.magnitude*(speed/movementSpeed));
     }
     #endregion
