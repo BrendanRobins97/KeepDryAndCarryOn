@@ -12,6 +12,7 @@ public class Hand : MonoBehaviour
     public float rotateForce = 1f;
     private GameObject handToFollow;
     private List<PhysicsObject> targets = new List<PhysicsObject>();
+    private PhysicsObject closestTarget;
     private PhysicsObject grabbedObject;
     private bool foundHand;
     private bool canRotate = true;
@@ -48,6 +49,7 @@ public class Hand : MonoBehaviour
                 targets.RemoveAt(i);
             }
         }
+        GetClosestTarget();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -72,6 +74,7 @@ public class Hand : MonoBehaviour
         PhysicsObject obj = collision.attachedRigidbody.GetComponent<PhysicsObject>();
         if (obj && targets.Contains(obj))
         {
+            obj.Untarget();
             targets.Remove(obj);
         }
     }
@@ -103,27 +106,43 @@ public class Hand : MonoBehaviour
         if (obj.pressType == InteractionSourcePressType.Select)
         {
             handAnimator.SetBool("Grabbed", true);
-            if (targets.Count <= 0)
-            {
-                return;
-            }
-            grabbedObject = targets[0];
-            if (targets.Count > 1)
-            {
-                for (int i = 1; i < targets.Count; i++)
-                {
-                    if ((targets[i].transform.position - transform.position).sqrMagnitude < (grabbedObject.transform.position - transform.position).sqrMagnitude)
-                    {
-                        grabbedObject = targets[i];
-
-                    }
-                }
-            } 
+            grabbedObject = closestTarget;
             grabbedObject?.Grab(transform);
         }
-
     }
 
+    private void GetClosestTarget()
+    {
+        grabbedObject?.Target();
+        if (targets.Count <= 0)
+        {
+            closestTarget = null;
+            return;
+        }
+        closestTarget = targets[0];
+        if (targets.Count > 1)
+        {
+            for (int i = 1; i < targets.Count; i++)
+            {
+                if ((targets[i].transform.position - transform.position).sqrMagnitude < (closestTarget.transform.position - transform.position).sqrMagnitude)
+                {
+                    closestTarget = targets[i];
+
+                }
+            }
+        }
+
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (targets[i] != closestTarget && targets[i] != grabbedObject)
+            {
+                targets[i].Untarget();
+            } else
+            {
+                targets[i].Target();
+            }
+        }
+    }
     private void InteractionSourceUpdated(InteractionSourceUpdatedEventArgs obj)
     {
         if ((obj.state.source.handedness == InteractionSourceHandedness.Left && right)
@@ -173,7 +192,10 @@ public class Hand : MonoBehaviour
             handAnimator.SetBool("Grabbed", false);
             if (grabbedObject != null)
             {
+                grabbedObject.Untarget();
+
                 grabbedObject.Drop();
+                grabbedObject = null;
             }
         }
     }
