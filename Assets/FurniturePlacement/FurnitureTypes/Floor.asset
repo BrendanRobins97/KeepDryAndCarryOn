@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd7e722ffe6c3f4dafa832b85bf983f, type: 3}
+  m_Name: Floor
+  m_EditorClassIdentifier: 
+  possibleFurniture:
+  - item: {fileID: 4401573533670120447, guid: 3cdd47bf0d3f90d44b9c46aaf6748e04, type: 3}
+    weight: 1
+  - item: {fileID: 2957758384111776721, guid: 2681e9b970da75c40ba3e41c6d2f6c43, type: 3}
+    weight: 1
+  - item: {fileID: 3683674298765834451, guid: 4862efcdf22570b4d9559ccdb3bca394, type: 3}
+    weight: 1
+  - item: {fileID: 1812703552587879766, guid: c0f1e14ea46c96d449a99551a170820b, type: 3}
+    weight: 1
+  - item: {fileID: 1260312988972169721, guid: fa1d55bb0f31594479dafe26ad2efc42, type: 3}
+    weight: 1
+  - item: {fileID: 8007455780108633149, guid: 5e371ed3bf1b7764791a908d8966877f, type: 3}
+    weight: 1
+  - item: {fileID: 8950062001771463648, guid: 95c4ee031e3117b4bb1183324466a776, type: 3}
+    weight: 1
+  - item: {fileID: 5194121759826687395, guid: da23097994998234b84380872da9e453, type: 3}
+    weight: 1
+  - item: {fileID: 4479421607943779503, guid: 374efda4b01d30e4987cd69a479353cf, type: 3}
+    weight: 1
+  - item: {fileID: 6262726165258817189, guid: 3a906eddb2ddde143b4a5fbaeaad60b8, type: 3}
+    weight: 1

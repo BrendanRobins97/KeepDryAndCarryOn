@@ -8,36 +8,77 @@ public class RoundController : MonoBehaviour
     public int debugFillPoints = 20000;
     [Tooltip("The amount of time in seconds before a round ends.")]
     public float roundLength = 60f;
-
-    [SerializeField]
-    private int roundsSurvived = 0;
+    public int holesAddedPerRound = 1;
+    public int roundsSurvived = 0;
 
     private bool betweenRounds = false;
+    private bool dead = false;
+    private bool filling = false;
 
     private WaterFillController fillCon;
-    // private Timer timer;
-    // private Raycaster caster;
+    private timerScript timer;
+    private WallController wallCon;
+    private globals raycaster;
 
     private void Start()
     {
         fillCon = gameObject.GetComponent<WaterFillController>();
-        // timer = gameObject.GetComponent<Timer>();
-        // caster = gameObject.GetComponent<Raycaster>();
+        timer = gameObject.GetComponent<timerScript>();
+        wallCon = gameObject.GetComponent<WallController>();
+        raycaster = gameObject.GetComponent<globals>();
+
+        timer.StartTimer();
     }
 
     private void Update()
     {
-        // Check if the timer has reached time
+        // Debugging
         if(Input.GetKeyDown(KeyCode.M) && debug && !betweenRounds)
         {
             betweenRounds = true;
-            // pause the timer
-            // Call raycaster to get number of fill points
 
-            //if()
             fillCon.BeginFilling(debugFillPoints);
             roundsSurvived++;
             betweenRounds = false;
         }
+
+        // Check if done raycasting
+        // Begin filling
+        if (betweenRounds && globals.doneChecker == 0 && filling)
+        {
+            fillCon.BeginFilling(globals.globalHoles);
+            filling = false;
+            // Game Over
+            if (fillCon.currentFill >= 1)
+            {
+                Debug.Log("ded :(");
+                dead = true;
+            }
+        }
+
+        // Fire the raycast
+        if (timer.GetTime() >= roundLength && !betweenRounds)
+        {
+            betweenRounds = true;
+            filling = true;
+            timer.PauseTimer();
+            raycaster.FireFunction(); // Startfiring raycast
+        }
+
+        // Start a new round
+        if (betweenRounds && !fillCon.currentlyFilling && !dead && globals.doneChecker == 0 && !filling)
+        {
+            StartNewRound();
+        }
+    }
+
+    private void StartNewRound()
+    {
+        globals.globalHoles = 0;
+        wallCon.AddHoles(holesAddedPerRound);
+        roundsSurvived++;
+        timer.ResetTime();
+        timer.StartTimer();
+        betweenRounds = false;
     }
 }

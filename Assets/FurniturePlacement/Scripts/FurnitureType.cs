@@ -1,51 +1,26 @@
 ﻿using UnityEngine;
+using static WeightedProbability;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/FurnitureType", order = 1)]
 public class FurnitureType : ScriptableObject
 {
     [Tooltip("Furniture pieces that can be spawned")]
     [SerializeField]
-    private GameObject[] possibleFurniturePieces;
-
-    [Tooltip("Higher numbers are more likely")]
-    [SerializeField]
-    private int[] probability;
+    private WeightedSpawnableFurniture[] possibleFurniture;
 
     private int total = 0;
+    private bool initialized;
 
-    void Awake()
+    void OnEnable()
     {
-        if (possibleFurniturePieces.Length != probability.Length)
-            throw new System.Exception("Counts must be equal");
+        if (possibleFurniture == null || possibleFurniture.Length == 0)
+            throw new System.Exception("Must have at least one piece of furniture to spawn");
 
-        CalculateProbabilities();
+        total = TotalWeights<WeightedSpawnableFurniture, SpawnableFurniture>(possibleFurniture);
     }
 
-    private void CalculateProbabilities()
+    public SpawnableFurniture RandomFurniturePrefab()
     {
-        for (int i = 0; i < probability.Length; ++i)
-        {
-            int current = probability[i];
-            probability[i] += total;
-            total += current;
-        }
-    }
-
-    public GameObject GetRandomFurniturePrefab()
-    {
-        return possibleFurniturePieces[GetRandomIndex()];
-    }
-
-    private int GetRandomIndex()
-    {
-        int num = Random.Range(0, total + 1);
-
-        for (int i = 0; i < probability.Length; ++i)
-        {
-            if (probability[i] >= num)
-                return i;
-        }
-
-        return probability.Length - 1;
+        return possibleFurniture[RandomIndex<WeightedSpawnableFurniture, SpawnableFurniture>(possibleFurniture, total)].Item;
     }
 }

@@ -6,7 +6,12 @@ TagManager:
   tags:
   - Undefined
   - Object
+<<<<<<< HEAD
   - Nail
+=======
+  - UI
+  - holecheck
+>>>>>>> 07a920351dc0fb0fa8afa854609075c5ea747f15
   layers:
   - Default
   - TransparentFX

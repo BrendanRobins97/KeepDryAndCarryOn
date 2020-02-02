@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class caster : MonoBehaviour
 {
@@ -12,15 +13,25 @@ public class caster : MonoBehaviour
     public GameObject myBottomRight;
     //public float timer;
     public float interval;
+
+    private bool firing = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        interval = .01f;
+        interval = .02f;
+        globals.FireEvent.AddListener(StartCast);
+    }
+
+    private void StartCast()
+    {
+        castBoot(myTopLeft.transform.localPosition.x, myBottomRight.transform.localPosition.x, myBottomRight.transform.localPosition.y, myTopLeft.transform.localPosition.y);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetAxis("Fire3") > 0.0 && rdy == true)
         {
             rdy = false;
@@ -33,6 +44,7 @@ public class caster : MonoBehaviour
     }
     void castBoot(float xMin, float xMax, float yMin, float yMax)
     {
+        globals.doneChecker += 1;
         holes = 0;
         plugs = 0;
         corDone = false;
@@ -47,15 +59,14 @@ public class caster : MonoBehaviour
     }
     int returnHoles(int myHoles, int myPlugs)
     {
-        print(myHoles);// + " "+ holes);
+        firing = false;
+        //print(myHoles);// + " "+ holes);
         corDone = true;
         globals.globalHoles += myHoles;
-        print(globals.globalHoles);
         return (myHoles);
     }
     IEnumerator cast(float xMin, float xMax, float yMin, float yMax)
     {
-        globals.doneChecker += 1;
         var timer = new System.Timers.Timer(16.666666666666667);//this is a frame at 60 fps
         timer.Elapsed += (s, e) => timer.Stop();
         timer.Start();

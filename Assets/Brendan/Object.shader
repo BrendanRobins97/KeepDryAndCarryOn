@@ -7,6 +7,8 @@
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 		_Glue("Glue", Range(0,1)) = 0.0
+		_Highlight("Highlight", Range(0,1)) = 0.0
+
 		_GlueTex("Albedo (RGB)", 2D) = "white" {}
     }
     SubShader
@@ -34,6 +36,8 @@
         half _Metallic;
         fixed4 _Color;
 		half _Glue;
+		half _Highlight;
+
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -46,8 +50,9 @@
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-			fixed4 glue = tex2D(_GlueTex, IN.uv_MainTex) * float4(1, 1, 1, 0.75f);
+			fixed4 glue = tex2D(_GlueTex, IN.uv_MainTex) * float4(1.4, 1.4, 0.65f, 1);
 			c = lerp(c, glue, _Glue);
+			c += float4(0, 0.3f, 0, 0) * _Highlight;
 
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
